@@ -1,15 +1,13 @@
 package com.an.rest.user;
 
+import com.an.bc.auth.AuthService;
 import com.an.bc.user.UserBCI;
 import com.an.bc.user.impl.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 @RestController
 @RequestMapping("/user")
@@ -19,8 +17,27 @@ public class UserRest {
     private UserBCI userBCI;
 
     @RequestMapping(method = RequestMethod.GET)
-    public UserDO findAll() {
+    public UserDO findLogedUser() {
+        return userBCI.findLogedUser();
+    }
 
-        return userBCI.findById(1L);
+    @RequestMapping(method = RequestMethod.PUT)
+    public Response saveUser(@RequestParam String userName, @RequestParam String password, @RequestParam String mail) {
+        return userBCI.saveUser(userName, password, mail);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public Response updateUser(@RequestBody UserDO userDO) {
+        return userBCI.updateUser(userDO);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/password")
+    public Response updateUser(@RequestParam String userName, @RequestParam String password, @RequestParam String newPassword) {
+        return userBCI.updateUser(userName, password, newPassword);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/season/{seasonId}")
+    public Response updateUser(@PathParam("seasonId") Long seasonId) {
+        return userBCI.updateUser(seasonId);
     }
 }

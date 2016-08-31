@@ -1,15 +1,31 @@
 package com.an.bc.user.repo;
 
-import com.an.bc.season.repo.SeasonBE;
+import com.an.bc.user.impl.UserDO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = UserBE.ENTITY_NAME)
 @Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = UserBE.FIND_BY_USERNAME, query = "SELECT u FROM " + UserBE.ENTITY_NAME +
+                " u WHERE u.userName = :" + UserBE.USERNAME),
+        @NamedQuery(name = UserBE.FIND_BY_USERNAME_AND_MAIL, query = "SELECT u FROM " + UserBE.ENTITY_NAME +
+                " u WHERE u.userName = :" + UserBE.USERNAME + " OR u.mail = :" + UserBE.MAIL),
+        @NamedQuery(name = UserBE.FIND_BY_USERNAME_AND_PASSWORD, query = "SELECT u FROM " + UserBE.ENTITY_NAME +
+                " u WHERE u.userName = :" + UserBE.USERNAME + " AND u.password = :" + UserBE.PASSWORD)
+})
 public class UserBE {
+
+    public static final String ENTITY_NAME = "users";
+
+    public static final String FIND_BY_USERNAME = "find_by_username";
+    public static final String USERNAME = "username";
+
+    public static final String FIND_BY_USERNAME_AND_MAIL = "find_by_username_and_mail";
+    public static final String MAIL = "mail";
+
+    public static final String FIND_BY_USERNAME_AND_PASSWORD = "find_by_username_and_password";
+    public static final String PASSWORD = "password";
 
     @Id
     @Column(name = "id")
@@ -30,21 +46,34 @@ public class UserBE {
     @Column(name = "mail")
     private String mail;
 
-    @Column(name = "active_season")
-    private SeasonBE seasonBE;
-
     @Column(name = "enabled")
     private Boolean enabled;
 
-    public UserBE(Long id, String userName, String password, String firstName, String lastName, String mail, SeasonBE seasonBE, Boolean enabled) {
+    public UserBE(Long id, String userName, String password, String firstName, String lastName, String mail, Boolean enabled) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
-        this.seasonBE = seasonBE;
         this.enabled = enabled;
+    }
+
+    public UserBE() {
+    }
+
+    public UserBE(String userName, String password, String mail) {
+        this.userName = userName;
+        this.password = password;
+        this.mail = mail;
+        this.enabled = true;
+    }
+
+    public UserBE(UserDO userDO) {
+        this.userName = userDO.getUserName();
+        this.firstName = userDO.getFirstName();
+        this.lastName = userDO.getLastName();
+        this.mail = userDO.getMail();
     }
 
     public Long getId() {
@@ -93,14 +122,6 @@ public class UserBE {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public SeasonBE getSeasonBE() {
-        return seasonBE;
-    }
-
-    public void setSeasonBE(SeasonBE seasonBE) {
-        this.seasonBE = seasonBE;
     }
 
     public Boolean getEnabled() {
