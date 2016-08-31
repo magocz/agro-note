@@ -17,12 +17,30 @@
     <context:component-scan base-package="com.an"/>
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config/>
+   <!--
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://188.40.44.195:3306/neldam_nr"/>
         <property name="username" value="neldam_nr"/>
         <property name="password" value="Admin1234"/>
+    </bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://188.40.44.195:3306/neldam_nr" />
+        <property name="username" value="neldam_nr" />
+        <property name="password" value="Admin1234" />
+        <property name="timeBetweenEvictionRunsMillis" value="300000" />
+        <property name="numTestsPerEvictionRun" value="6" />
+        <property name="minEvictableIdleTimeMillis" value="1800000" />
+        <property name="initialSize" value="3" />
+        <property name="maxActive" value="10" />
+        <property name="maxIdle" value="10" />
+        <property name="maxWait" value="5000" />
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxOpenPreparedStatements" value="100" />
     </bean>
 
     <bean id="entityManagerFactory"
