@@ -29,6 +29,7 @@ public class UserDO {
         this.lastName = userBE.getLastName();
         this.mail = userBE.getMail();
         this.userName = userBE.getUserName();
+        this.seasonDO = new SeasonDO(userBE.getSeasonBE());
     }
 
     public UserDO(Boolean enabled, String firstName, Long id, String lastName, String mail, SeasonDO seasonDO, String userName) {
@@ -96,4 +97,8 @@ public class UserDO {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 }
+
+
