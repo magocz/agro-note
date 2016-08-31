@@ -29,9 +29,9 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://188.40.44.195:3306/neldam_nr" />
-        <property name="username" value="neldam_nr" />
-        <property name="password" value="Admin1234" />
+        <property name="url" value="jdbc:mysql://188.40.44.195:3306/neldam_an" />
+        <property name="username" value="neldam_an" />
+        <property name="password" value="dgG3r80q" />
         <property name="timeBetweenEvictionRunsMillis" value="300000" />
         <property name="numTestsPerEvictionRun" value="6" />
         <property name="minEvictableIdleTimeMillis" value="1800000" />

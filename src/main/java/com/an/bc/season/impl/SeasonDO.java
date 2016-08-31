@@ -13,7 +13,7 @@ public class SeasonDO {
         this.description = seasonBE.getDescription();
         this.fieldsNumber = seasonBE.getFieldsNumber();
         this.id = seasonBE.getId();
-        this.userId = seasonBE.getUserBE().getId();
+        this.userId = seasonBE.getUserId();
     }
 
     public SeasonDO(String description, Long fieldsNumber, Long id, Long userId) {

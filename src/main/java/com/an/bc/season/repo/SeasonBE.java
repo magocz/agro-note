@@ -1,8 +1,9 @@
 package com.an.bc.season.repo;
 
-import com.an.bc.user.repo.UserBE;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity(name = SeasonBE.ENTITY_NAME)
 @Table(name = "seasons")
@@ -15,10 +16,8 @@ public class SeasonBE {
     @Column(name = "id")
     private Long id;
 
-    @PrimaryKeyJoinColumn
-    @OneToOne
-    @JoinColumn(name="user_id")
-    private UserBE userBE;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(name = "description")
     private String description;
@@ -29,11 +28,11 @@ public class SeasonBE {
     public SeasonBE() {
     }
 
-    public SeasonBE(String description, Long fieldsNumber, Long id, UserBE userBE) {
+    public SeasonBE(String description, Long fieldsNumber, Long id, Long userId) {
         this.description = description;
         this.fieldsNumber = fieldsNumber;
         this.id = id;
-        this.userBE = userBE;
+        this.userId = userId;
     }
 
     public String getDescription() {
@@ -64,11 +63,11 @@ public class SeasonBE {
         this.id = id;
     }
 
-    public UserBE getUserBE() {
-        return userBE;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserBE(UserBE userBE) {
-        this.userBE = userBE;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

@@ -1,6 +1,5 @@
 package com.an.bc.user.impl;
 
-import com.an.bc.season.impl.SeasonDO;
 import com.an.bc.user.repo.UserBE;
 
 public class UserDO {
@@ -15,7 +14,7 @@ public class UserDO {
 
     private String mail;
 
-    private SeasonDO seasonDO;
+    private Long activeSeasonId;
 
     private Boolean enabled;
 
@@ -29,16 +28,16 @@ public class UserDO {
         this.lastName = userBE.getLastName();
         this.mail = userBE.getMail();
         this.userName = userBE.getUserName();
-        this.seasonDO = new SeasonDO(userBE.getSeasonBE());
+        this.activeSeasonId = userBE.getActiveSeasonId();
     }
 
-    public UserDO(Boolean enabled, String firstName, Long id, String lastName, String mail, SeasonDO seasonDO, String userName) {
+    public UserDO(Boolean enabled, String firstName, Long id, String lastName, String mail, Long activeSeasonId, String userName) {
         this.enabled = enabled;
         this.firstName = firstName;
         this.id = id;
         this.lastName = lastName;
         this.mail = mail;
-        this.seasonDO = seasonDO;
+        this.activeSeasonId = activeSeasonId;
         this.userName = userName;
     }
 
@@ -82,14 +81,6 @@ public class UserDO {
         this.mail = mail;
     }
 
-    public SeasonDO getSeasonDO() {
-        return seasonDO;
-    }
-
-    public void setSeasonDO(SeasonDO seasonDO) {
-        this.seasonDO = seasonDO;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -98,7 +89,13 @@ public class UserDO {
         this.userName = userName;
     }
 
+    public Long getActiveSeasonId() {
+        return activeSeasonId;
+    }
 
+    public void setActiveSeasonId(Long activeSeasonId) {
+        this.activeSeasonId = activeSeasonId;
+    }
 }
 
 

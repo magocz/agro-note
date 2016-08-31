@@ -1,6 +1,5 @@
 package com.an.bc.user.repo;
 
-import com.an.bc.season.repo.SeasonBE;
 import com.an.bc.user.impl.UserDO;
 
 import javax.persistence.*;
@@ -50,9 +49,8 @@ public class UserBE {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @PrimaryKeyJoinColumn
-    @OneToOne
-    private SeasonBE seasonBE;
+    @Column(name = "active_season")
+    private Long activeSeasonId;
 
     public UserBE(Long id, String userName, String password, String firstName, String lastName, String mail, Boolean enabled) {
         this.id = id;
@@ -137,12 +135,11 @@ public class UserBE {
         this.enabled = enabled;
     }
 
-    public SeasonBE getSeasonBE() {
-        return seasonBE;
+    public Long getActiveSeasonId() {
+        return activeSeasonId;
     }
 
-    public void setSeasonBE(SeasonBE seasonBE) {
-        this.seasonBE = seasonBE;
+    public void setActiveSeasonId(Long activeSeasonId) {
+        this.activeSeasonId = activeSeasonId;
     }
-
 }
