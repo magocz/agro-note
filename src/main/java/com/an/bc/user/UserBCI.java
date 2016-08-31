@@ -1,7 +1,9 @@
 package com.an.bc.user;
 
-import com.an.bc.user.repo.UserBE;
+import com.an.bc.user.impl.UserDO;
 
 public interface UserBCI {
-    UserBE findById(Long id);
+    UserDO findById(Long id);
+
+    UserDO findByUsername(String username);
 }

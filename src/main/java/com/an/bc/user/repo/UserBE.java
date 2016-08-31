@@ -1,5 +1,7 @@
 package com.an.bc.user.repo;
 
+import com.an.bc.season.repo.SeasonBE;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ public class UserBE {
     @Column(name = "id")
     private Long id;
 
-   /* @Column(name = "user_name")
+    @Column(name = "username")
     private String userName;
 
     @Column(name = "password")
@@ -33,9 +35,6 @@ public class UserBE {
 
     @Column(name = "enabled")
     private Boolean enabled;
-
-    public UserBE() {
-    }
 
     public UserBE(Long id, String userName, String password, String firstName, String lastName, String mail, SeasonBE seasonBE, Boolean enabled) {
         this.id = id;
@@ -110,16 +109,6 @@ public class UserBE {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
-    }*/
-
-    public UserBE() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

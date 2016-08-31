@@ -13,7 +13,8 @@ public class UserBA implements UserBCI {
     @Autowired
     private UserRepo userRepo;
 
-    public UserBE findById(Long id) {
-        return userRepo.findById(id);
+    public UserDO findById(Long id) {
+        UserBE userBE = userRepo.findById(id);
+        return userBE == null ? null : new UserDO(userBE);
     }
 }
