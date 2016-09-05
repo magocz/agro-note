@@ -36,6 +36,11 @@ public class MainController {
 
 	}
 
+    @RequestMapping("/greeting")
+    public String startHtml() {
+        return "index";
+    }
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {

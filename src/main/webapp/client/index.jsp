@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../src/common/resources/menu.css">
+    <link rel="stylesheet" type="text/css" href="../src/home/resources/home.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../src/common/resources/bootstrap.css">
+    <link rel="stylesheet" href="../src/common/resources/jquery-ui.css">
+
+    <script src="../src/common/js/jquery-2.2.3.js"></script>
+    <script src="../src/common/js/jquery-ui.js"></script>
+    <script src="../src/common/js/datepicker-pl.js"></script>
+    <script src="../src/common/js/bootstrap/bootstrap.js"></script>
+    <script src="../src/common/js/highcharts/highcharts.js"></script>
+    <script src="../src/common/js/highcharts/modules/data.js"></script>
+    <script src="../src/common/js/highcharts/modules/drilldown.js"></script>
+    <script type="text/javascript" src="../src/common/js/tablesorter/jquery.tablesorter.js"></script>
+
+
+    <script src="../src/home/js/ChartModel.js"></script>
+    <script src="../src/home/js/AddOperation.js"></script>
+    <script src="../src/home/js/EditField.js"></script>
+    <script src="../src/home/js/DeleteField.js"></script>
+    <script src="../src/home/js/AddField.js"></script>
+    <script src="../src/home/js/FieldTable.js"></script>
+    <script src="../src/home/js/AddSeason.js"></script>
+    <script src="../src/home/js/HomeControloe.js"></script>
+    <script src="../src/authorization/js/Logout.js"></script>
+    <title>Agro-Note Home</title>
+
+</head>
+<body>
+<div id="mainContent" hidden="true">
+    <table id="homeTable" class="homeTable" align="center">
+        <tr>
+            <td colspan="2">
+                <div>
+                    <ul class="menu">
+                        <li><a class="active" href="/" style="text-decoration: none">Home</a></li>
+                        <li><a href="/seasons">Sezony</a></li>
+                        <li id="logoutBtn" style="float:right"><a onclick="logout()" style="cursor: pointer">Wyloguj</a>
+                        </li>
+                        <li style="float:right"><a href="/user/">Twoje dane</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr class="seasonData" hidden="true">
+            <td colspan="2">
+                <div> Panel sezonu
+                </div>
+            </td>
+        </tr>
+        <tr style="margin-top: 200px" class="seasonData">
+            <td class="activeSeasonCell">
+                <div id="activeSeasonPipeChartContener"></div>
+            </td>
+            <td class="lastOperationCell">
+                <div id="activeSeasonColumnChartContener"></div>
+            </td>
+        </tr>
+        <tr class="seasonData">
+            <td class="activeSeasonCell">
+                <div class="pipeChartSelect">
+                    <select id="activeSeasonChartCombobox">
+                        <option value="plantsToVarietes">Uprawiane rośliny / odmiana rośliny</option>
+                        <option value="plantsToDescription">Uprawiane rośliny / pole (opis)</option>
+                        <option value="plantsToField">Uprawiane rośliny / nr działki</option>
+                    </select>
+                </div>
+            </td>
+            <td class="lastOperationCell">
+                <div class="pipeChartSelect">
+                    <select id="activeSeasonColumnChartCombobox">
+                        <option value="plantsToCostProField">Koszt</option>
+                        <option value="plantsToCostProHa">Koszt na hektar</option>
+                        <option value="plantsToProfitProField">Zysk</option>
+                        <option value="plantsToProfitProHa">Zysk na hektar</option>
+                        <option value="plantsToRevenuesProField">Przychody</option>
+                        <option value="plantsToRevenuesProHa">Przychody na hektar</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr class="homeTableSearchRow seasonData">
+            <td class="homeTableSearchCell" colspan="2">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div align="right" class="homeTableSiteCell">
+                                <table align="right">
+                                    <tr>
+                                        <td class="homeTableSearchCell" style="width: 33%">
+                                            <div align="left" class="homeTableSearchCell">
+                                                Szukaj:
+                                                <input type="text" id="search">
+                                            </div>
+                                        </td>
+                                        <td style="width: 33%">
+                                            <table align="center" style="width: 50px">
+                                                <tr>
+                                                    <td>
+                                                        <div class="seasonActions">
+                                                         <span id="addNewFieldToActiveSeason" align="right"
+                                                               hidden="true">
+                                                             <i class="fa fa-plus"></i>
+                                                         </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="fa fa-chevron-left"
+                                                             style='font-size:16px; cursor: pointer; '
+                                                             onclick="goBack()"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="fieldsHomeTableSiteInfo"
+                                                             id="fieldsHomeTableSiteInfo"></div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="fa fa-chevron-right"
+                                                             style='font-size:16px; cursor: pointer;'
+                                                             onclick="goNext()"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width: 33%">
+                                            <button id="editFieldsPlantData"
+                                                    onclick="openEditFieldsPlantDataModalDialog()" align="right"
+                                                    type="button"
+                                                    class="btn btn-success"
+                                                    style="float: right; margin-top: 10px ; margin-left: 10px;"
+                                                    disabled="true">
+                                                Edytuj działki
+                                            </button>
+                                            <button id="addOperationTuSelFieldsBtn"
+                                                    onclick="openAddOperationToFieldsModalDialog()" align="right"
+                                                    type="button"
+                                                    class="btn btn-success"
+                                                    style="float: right; margin-top: 10px ; margin-left: 10px;"
+                                                    disabled="true">
+                                                Dodaj zabieg
+                                            </button>
+                                            <button onclick="openSaveNewFieldModal()" align="right" type="button"
+                                                    class="btn btn-success"
+                                                    style="float: right; margin-top: 10px;">Dodaj pole
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="seasonData">
+            <td colspan="2">
+                <div id="homeTableCell" class="homeTableCellDiv">
+                </div>
+            </td>
+        </tr>
+        <tr class="seasonData">
+            <td colspan="2">
+                <div align="right" id="fieldsTableShwonRowInfo"></div>
+            </td>
+        </tr>
+        <tr id="addFirstSeasonRow" hidden="true">
+            <td colspan="2">
+                <div style="margin-top: 10px; ">Nie masz jeszcze żadnego aktywnego sezonu</div>
+                <button onclick="openAddSeasonModal()" align="center" type="button"
+                        class="btn btn-success"
+                        style="margin-top: 10px; margin-bottom: 500px">Dodaj nowy sezon
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="footer">Copyright&copy; Neldam Software Solutions</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="editFieldModalContener"></div>
+<div id="deleteFieldModalContener"></div>
+<div id="addOperationModalContener"></div>
+<div id="addSeasonModalContener"></div>
+</body>
+</html>

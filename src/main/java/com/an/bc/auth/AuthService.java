@@ -1,6 +1,7 @@
 package com.an.bc.auth;
 
 import com.an.bc.user.UserBCI;
+import com.an.bc.user.impl.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,21 +16,26 @@ public class AuthService {
     private UserBCI userBCI;
 
     public Long getLogedUserId() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            return userDetail == null ? null : userBCI.findUserIdByUsername(userDetail.getUsername());
-        }
-        return null;
+        UserDetails userDetail = getLogedUserDetails();
+        return userDetail == null ? null : userBCI.findUserIdByUsername(userDetail.getUsername());
     }
 
     public String getLogedUserUsername() {
+        UserDetails userDetail = getLogedUserDetails();
+        return userDetail == null ? null : userDetail.getUsername();
+    }
+
+    public UserDO getLogedUser() {
+        UserDetails userDetail = getLogedUserDetails();
+        return userDetail == null ? null : userBCI.findByUsername(userDetail.getUsername());
+    }
+
+    private UserDetails getLogedUserDetails() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            return userDetail.getUsername();
+            return userDetail;
         }
         return null;
     }
-
 }
