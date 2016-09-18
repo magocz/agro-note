@@ -9,10 +9,8 @@ $(document).ready(function () {
     $("#menu-contact-url").attr("href", UrlUtil.get("path.contact"));
 
     $("#menu-register-url").text(I18n.get("menu.register"));
-    $("#menu-register-url").attr("href", UrlUtil.get("path.register"));
 
     $("#menu-login-url").text(I18n.get("menu.login"));
-    $("#menu-login-url").attr("href", UrlUtil.get("path.login"));
 
     $("#footer").text(I18n.get("footer.copyright"));
 

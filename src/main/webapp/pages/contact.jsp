@@ -9,7 +9,6 @@
 
     <script src="<c:url value="/resources/js/common/jquery-2.2.3.js" />"></script>
     <script src="<c:url value="/resources/js/common/jquery-ui.js" />"></script>
-    <script src="<c:url value="/resources/js/common/bootstrap/bootstrap.js" />"></script>
 </head>
 <body>
 </body>
@@ -17,7 +16,7 @@
 <table align="center">
     <tr>
         <td>
-            <jsp:include page="menus/not-loged-in-menu.jsp"/>
+            <jsp:include page="menus/not-loged-in-menu-contact.jsp"/>
         </td>
     </tr>
 
@@ -36,5 +35,8 @@
     </tr>
 </table>
 
+<div id="login-modal-contener">
+    <jsp:include page="modals/login-modal.jsp"/>
+</div>
 
 </html>

@@ -20,7 +20,7 @@
 <ul>
     <li><a id="menu-home-url"></a></li>
 
-    <div style="float: right">
+    <div style="float: right" onclick="showLoginModal()">
         <li><a id="menu-login-url"></a></li>
     </div>
     <div style="float: right">
@@ -32,7 +32,6 @@
     <div style="float: right">
         <li><a id="menu-offer-url"></a></li>
     </div>
-
 
 </ul>
 

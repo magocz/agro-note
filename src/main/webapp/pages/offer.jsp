@@ -17,7 +17,7 @@
 <table align="center">
     <tr>
         <td>
-            <jsp:include page="menus/not-loged-in-menu.jsp"/>
+            <jsp:include page="menus/not-loged-in-menu-offer.jsp"/>
         </td>
     </tr>
 
@@ -34,5 +34,8 @@
     </tr>
 </table>
 
+<div id="login-modal-contener">
+    <jsp:include page="modals/login-modal.jsp"/>
+</div>
 
 </html>

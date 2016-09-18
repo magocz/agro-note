@@ -11,6 +11,7 @@ ul {
 li {
     float: left;
     text-decoration: none;
+    cursor: pointer;
 }
 
 li a {
@@ -22,7 +23,8 @@ li a {
 }
 
 li a:hover {
-    background-color: #111;
+    color: white;
+    background-color: #ff8c1a;
     text-decoration: none;
 }
 
@@ -30,4 +32,8 @@ li a:hover {
     position: fixed;
     bottom: 0;
     text-align: center;
+}
+
+.menu-selected {
+    background-color: #ff8c1a;
 }

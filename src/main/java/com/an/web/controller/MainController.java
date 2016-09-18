@@ -13,6 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+
+    @RequestMapping(value = {"/home", "/", ""}, method = RequestMethod.GET)
+    public String homePage() {
+        return "home";
+    }
+
+    @RequestMapping(value = {"/login-error"}, method = RequestMethod.GET)
+    public String loginErrorPage() {
+        return "login-error";
+    }
+
+
     @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
     public String welcomePage() {
         return "welcome";
@@ -30,5 +42,4 @@ public class MainController {
         return "contact";
 
     }
-
 }
