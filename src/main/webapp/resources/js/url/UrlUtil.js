@@ -6,14 +6,12 @@ UrlUtil.prefix = "";
 UrlUtil.urls = {
     path: {
         home: "/",
-        welcome: "/welcome",
+        welcome: "",
         seasons: "/seasons",
         field: "/field",
         fields: "/fields",
-        contact: "/contact",
-        offer: "/offer",
-        login: "#login",
-        register: "#register",
+        contact: "#contact",
+        offer: "#offer",
         logout: "/j_spring_security_logout",
     },
 
@@ -42,4 +40,8 @@ UrlUtil.get = function (key) {
     });
     url = (UrlUtil.prefix + url)
     return url;
+}
+
+UrlUtil.getHash = function () {
+    return document.location.hash;
 }

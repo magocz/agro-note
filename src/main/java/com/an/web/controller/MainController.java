@@ -25,21 +25,9 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/welcome**"}, method = RequestMethod.GET)
     public String welcomePage() {
         return "welcome";
-
-    }
-
-    @RequestMapping(value = {"/offer"}, method = RequestMethod.GET)
-    public String offerPage() {
-        return "offer";
-
-    }
-
-    @RequestMapping(value = {"/contact"}, method = RequestMethod.GET)
-    public String contactPage() {
-        return "contact";
 
     }
 }

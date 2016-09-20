@@ -11,3 +11,7 @@ $(document).ready(function () {
 function showLoginModal() {
     $("#login-modal").modal();
 }
+
+function onload() {
+    console.log("fdfdfd");
+}

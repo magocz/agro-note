@@ -13,30 +13,5 @@
 <body>
 </body>
 </html>
-<table align="center">
-    <tr>
-        <td>
-            <jsp:include page="menus/not-loged-in-menu-contact.jsp"/>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <div>
-
-            </div>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <div class="footer" id="footer"></div>
-        </td>
-    </tr>
-</table>
-
-<div id="login-modal-contener">
-    <jsp:include page="modals/login-modal.jsp"/>
-</div>
-
+<div>Bala bla contakt</div>
 </html>

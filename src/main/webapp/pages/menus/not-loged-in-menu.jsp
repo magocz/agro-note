@@ -18,24 +18,23 @@
 <body>
 
 <ul>
-    <li><a id="menu-home-url"></a></li>
+    <div onclick="welcomeTabSelected()">
+        <li><a class="not-loget-in-menu-item" id="menu-home-url"></a></li>
+    </div>
 
     <div style="float: right" onclick="showLoginModal()">
-        <li><a id="menu-login-url"></a></li>
+        <li><a class="not-loget-in-menu-item" id="menu-login-url"></a></li>
     </div>
     <div style="float: right">
-        <li><a id="menu-register-url"></a></li>
+        <li><a class="not-loget-in-menu-item" id="menu-register-url"></a></li>
     </div>
-    <div style="float: right">
-        <li><a id="menu-contact-url"></a></li>
+    <div style="float: right" onclick="contactTabSelected()">
+        <li><a class="not-loget-in-menu-item" id="menu-contact-url"></a></li>
     </div>
-    <div style="float: right">
-        <li><a id="menu-offer-url"></a></li>
+    <div style="float: right" onclick="offerTabSelected()">
+        <li class="not-loget-in-menu-item"><a class="not-loget-in-menu-item" id="menu-offer-url"></a></li>
     </div>
-
 </ul>
 
 </body>
-</html>
-
 </html>

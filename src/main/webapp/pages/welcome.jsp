@@ -14,20 +14,21 @@
 <body>
 </body>
 </html>
-<table align="center">
+<table align="center" style="height:100%;">
     <tr>
         <td>
-            <jsp:include page="menus/not-loged-in-menu-welcome.jsp"/>
+            <jsp:include page="menus/not-loged-in-menu.jsp"/>
         </td>
     </tr>
 
-    <tr>
-        <td>
-            <div></div>
+    <tr style="height:100%">
+        <td style="white-space: nowrap;">
+            <div style="height:100% ; background-color: #333" id="main-content-load">Loanding ...</div>
+            <div id="main-content"></div>
         </td>
     </tr>
 
-    <tr>
+    <tr style="height:100%">
         <td>
             <div class="footer" id="footer"></div>
         </td>
