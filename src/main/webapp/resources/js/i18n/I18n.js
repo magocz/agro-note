@@ -5,73 +5,74 @@ I18n.data = {
 
     states: {
         pl: [
-            "Dolnośląskie",
-            "Kujawsko-pomorskie",
-            "Lubelskie",
-            "Lubuskie",
-            "Łódzkie",
-            "Małopolskie",
-            "Mazowieckie",
-            "Opolskie",
-            "Podkarpackie",
-            "Podlaskie",
-            "Pomorskie",
-            "Śląskie",
-            "Świętokrzyskie",
-            "Warmińsko-mazurskie",
-            "Wielkopolskie",
-            "Zachodniopomorskie"
-        ],
-        en: ["Alabama",
-            "Alaska",
-            "Arizona",
-            "Arkansas",
-            "California",
-            "Colorado",
-            "Connecticut",
-            "Delaware",
-            "Florida",
-            "Georgia",
-            "Hawaii",
-            "Idaho",
-            "Illinois",
-            "Indiana",
-            "Iowa",
-            "Kansas",
-            "Kentucky",
-            "Louisiana",
-            "Maine",
-            "Maryland",
-            "Massachusetts",
-            "Michigan",
-            "Minnesota",
-            "Mississippi",
-            "Missouri",
-            "Montana",
-            "Nebraska",
-            "Nevada",
-            "New Hampshire",
-            "New Jersey",
-            "New Mexico",
-            "New York",
-            "North Carolina",
-            "North Dakota",
-            "Ohio",
-            "Oklahoma",
-            "Oregon",
-            "Pennsylvania",
-            "Rhode Island",
-            "South Carolina",
-            "South Dakota",
-            "Tennessee",
-            "Texas",
-            "Utah",
-            "Vermont",
-            "Virginia",
-            "Washington",
-            "West Virginia",
-            "Wisconsin",
-            "Wyoming"
+            {
+                val: "-",
+                key: "none"
+            },
+            {
+                val: "Dolnośląskie",
+                key: "dśl"
+            },
+            {
+                val: "Kujawsko-pomorskie",
+                key: "k-p"
+            },
+            {
+                val: "Lubelskie",
+                key: "lbl"
+            },
+            {
+                val: "Lubuskie",
+                key: "lbu"
+            },
+            {
+                val: "Łódzkie",
+                key: "łdz"
+            },
+            {
+                val: "Małopolskie",
+                key: "młp"
+            },
+            {
+                val: "Mazowieckie",
+                key: "maz"
+            },
+            {
+                val: "Opolskie",
+                key: "opo"
+            },
+            {
+                val: "Podkarpackie",
+                key: "pkr"
+            },
+            {
+                val: "Podlaskie",
+                key: "pdl"
+            },
+            {
+                val: "Pomorskie",
+                key: "pom"
+            },
+            {
+                val: "Śląskie",
+                key: "śl"
+            },
+            {
+                val: "Świętokrzyskie",
+                key: "św"
+            },
+            {
+                val: "Warmińsko-mazurskie",
+                key: "w-m"
+            },
+            {
+                val: "Wielkopolskie",
+                key: "wlp"
+            },
+            {
+                val: "Zachodniopomorskie",
+                key: "zpm"
+            }
         ]
     },
 
@@ -83,10 +84,6 @@ I18n.data = {
         {
             key: "pl",
             val: "Polska"
-        },
-        {
-            key: "en",
-            val: "USA"
         }
     ],
 
@@ -103,7 +100,7 @@ I18n.data = {
             pl: "Imię",
             en: "First name"
         },
-        lastname: {
+        secondname: {
             pl: "Nazwisko",
             en: "Second name"
         },
@@ -151,6 +148,46 @@ I18n.data = {
             msg: {
                 pl: "Niestety podany login lub hasło jest błędne, spróbuj jeszcze raz.",
                 en: "Login or password is wrong, try again."
+            },
+            faild: {
+                pl: "Błedny login lub hasło, logowanie nie udane.",
+                en: "Wrong username or password, login faild."
+            },
+        },
+        register: {
+            username: {
+                empty: {
+                    pl: "Nazwa użytkownika jest wymagana.",
+                    en: "Username is required."
+                },
+                used: {
+                    pl: "Nazwa użytkownika jest już zajeta, wpisz inną.",
+                    en: "Username is used, try another."
+                }
+            },
+            password: {
+                empty: {
+                    pl: "Hasło jest wymagane.",
+                    en: "Password is required."
+                },
+                notequal: {
+                    pl: "Podane hasła się różnią..",
+                    en: "Password are not equal."
+                }
+            },
+            mail: {
+                empty: {
+                    pl: "E-Mail jest wymagany.",
+                    en: "E-Mail is required."
+                },
+                wrongtyp: {
+                    pl: "Wpisz poprawnie adres E-Mail.",
+                    en: "Set E-Mail correct."
+                },
+                used: {
+                    pl: "E-Mail jest już zajety, wpisz inny.",
+                    en: "E-Mail is used, try another."
+                }
             }
         }
     },

@@ -6,13 +6,21 @@ UrlUtil.prefix = "";
 UrlUtil.urls = {
     path: {
         home: "/",
-        welcome: "",
+        welcome: "#welcome",
         seasons: "/seasons",
         field: "/field",
         fields: "/fields",
         contact: "#contact",
         offer: "#offer",
-        logout: "/j_spring_security_logout",
+        login: '#login',
+        loginerror: '/welcome#login?error',
+        logout: "#logout",
+        register: '#register'
+    },
+
+    service: {
+        login: '/j_spring_security_check',
+        logout: '/j_spring_security_logout'
     },
 
     rest: {
@@ -20,6 +28,14 @@ UrlUtil.urls = {
         user: "/rest/user/",
         fields: "/rest/fields/",
         seasons: "/rest/seasons/"
+    },
+    page: {
+        welcome: 'pages/content/welcome/welcome.jsp',
+        offer: 'pages/content/welcome/offer.jsp',
+        contact: 'pages/content/welcome/contact.jsp',
+        login: 'pages/content/welcome/login.jsp',
+        loginerror: 'pages/content/welcome/login.jsp',
+        register: 'pages/content/welcome/register.jsp'
     }
 };
 
@@ -41,7 +57,22 @@ UrlUtil.get = function (key) {
     url = (UrlUtil.prefix + url)
     return url;
 }
-
+/**
+ * Method to get the hash from the URL
+ * @returns {string}
+ */
 UrlUtil.getHash = function () {
-    return document.location.hash;
+    return document.location.hash.split("?")[0];
+}
+
+/**
+ * Method that return the page path that equals the selected url/hash.
+ * @param hash
+ */
+UrlUtil.getPagePath = function (hash) {
+    return UrlUtil.get('page.' + UrlUtil.getHash().substring(1));
+}
+
+UrlUtil.getFullPathname = function () {
+    return (document.location.pathname + document.location.hash);
 }

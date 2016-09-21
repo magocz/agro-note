@@ -22,11 +22,11 @@
         <form-login
                 login-page="/welcome"
                 default-target-url="/"
-                authentication-failure-url="/login-error"
+                authentication-failure-url="/welcome#login?error"
                 username-parameter="username"
                 login-processing-url="/j_spring_security_check"
                 password-parameter="password"/>
-        <logout logout-success-url="/welcome?logout"
+        <logout logout-success-url="/welcome#login"
                 logout-url="/j_spring_security_logout"/>
         <!-- enable csrf protection -->
         <csrf/>

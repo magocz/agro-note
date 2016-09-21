@@ -28,6 +28,6 @@ function onCountrieSelect() {
     $("#state-select").attr("disabled", false);
     $("#state-select").empty();
     $.each(I18n.getStates(selVal), function (key, value) {
-        $("#state-select").append('<option value=' + value + '>' + value + '</option>');
+        $("#state-select").append('<option value=' + value.key + '>' + value.val + '</option>');
     });
 }

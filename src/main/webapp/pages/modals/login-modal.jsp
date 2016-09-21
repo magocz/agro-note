@@ -11,20 +11,17 @@
     <script src="<c:url value="/resources/js/common/jquery-ui.js" />"></script>
     <script src="<c:url value="/resources/js/common/bootstrap/bootstrap.js" />"></script>
     <script src="<c:url value="/resources/js/i18n/I18n.js" />"></script>
-    <script src="<c:url value="/resources/js/login/login.js" />"></script>
+    <script src="<c:url value="/resources/js/welcome/login/login.js" />"></script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
 <!--login modal dialog-->
-<div class="modal fade" id="login-modal" role="dialog" data-backdrop="static"
+<div class="modal fade" id="register-modal" role="dialog" data-backdrop="static"
      data-keyboard="false">
     <div class="modal-dialog  modal-sm">
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form name='loginForm'
-                  action="<c:url value='/j_spring_security_check' />" method='POST'>
-
                 <div class="modal-header">
                     <h4 class="modal-title" id="login-modal-header"></h4>
                 </div>
@@ -49,8 +46,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal"
                             id="login-modal-button-cancel"></button>
                 </div>
-            </form>
-
         </div>
     </div>
 </div>

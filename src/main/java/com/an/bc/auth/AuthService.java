@@ -30,6 +30,10 @@ public class AuthService {
         return userDetail == null ? null : userBCI.findByUsername(userDetail.getUsername());
     }
 
+    public boolean isUserLogedIn() {
+        return getLogedUserDetails() != null;
+    }
+
     private UserDetails getLogedUserDetails() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -38,4 +42,6 @@ public class AuthService {
         }
         return null;
     }
+
+
 }
