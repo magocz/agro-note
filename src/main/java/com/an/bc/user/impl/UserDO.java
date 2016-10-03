@@ -10,7 +10,7 @@ public class UserDO {
 
     private String firstName;
 
-    private String lastName;
+    private String secondName;
 
     private String mail;
 
@@ -25,17 +25,17 @@ public class UserDO {
         this.enabled = userBE.getEnabled();
         this.firstName = userBE.getFirstName();
         this.id = userBE.getId();
-        this.lastName = userBE.getLastName();
+        this.secondName = userBE.getLastName();
         this.mail = userBE.getMail();
         this.userName = userBE.getUserName();
         this.activeSeasonId = userBE.getActiveSeasonId();
     }
 
-    public UserDO(Boolean enabled, String firstName, Long id, String lastName, String mail, Long activeSeasonId, String userName) {
+    public UserDO(Boolean enabled, String firstName, Long id, String secondName, String mail, Long activeSeasonId, String userName) {
         this.enabled = enabled;
         this.firstName = firstName;
         this.id = id;
-        this.lastName = lastName;
+        this.secondName = secondName;
         this.mail = mail;
         this.activeSeasonId = activeSeasonId;
         this.userName = userName;
@@ -65,12 +65,12 @@ public class UserDO {
         this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getMail() {

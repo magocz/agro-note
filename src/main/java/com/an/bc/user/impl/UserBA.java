@@ -19,6 +19,9 @@ public class UserBA implements UserBCI {
     @Autowired
     private AuthService authServicel;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDO findByUsername(String username) {
         UserBE userBE = userRepo.findByUsername(username);
@@ -34,7 +37,7 @@ public class UserBA implements UserBCI {
     public Response saveUser(String userName, String password, String mail) {
         UserBE userBE = userRepo.findByUsernameAndMail(userName, mail);
         if (userBE == null) {
-            userBE = userRepo.saveUser(userName, password, mail);
+            userBE = userRepo.saveUser(userName, passwordEncoder.generateHash(password), mail);
             Response.ok(userBE).build();
         } else if (userName.equals(userBE.getUserName())) {
             Response.status(Response.Status.CONFLICT).entity("USERNAME").build();

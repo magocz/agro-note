@@ -27,7 +27,6 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.10.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.12.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.9" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.2.RELEASE" />
@@ -47,6 +46,8 @@
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.6.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

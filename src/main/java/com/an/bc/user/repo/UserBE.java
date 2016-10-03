@@ -75,7 +75,7 @@ public class UserBE {
     public UserBE(UserDO userDO) {
         this.userName = userDO.getUserName();
         this.firstName = userDO.getFirstName();
-        this.lastName = userDO.getLastName();
+        this.lastName = userDO.getSecondName();
         this.mail = userDO.getMail();
     }
 
