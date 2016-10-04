@@ -1,6 +1,8 @@
 package com.an.bc.user.repo;
 
 import com.an.bc.user.impl.UserDO;
+import com.sun.istack.internal.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -28,14 +30,22 @@ public class UserBE {
     public static final String PASSWORD = "password";
 
     @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    @NotNull
     @Column(name = "username")
     private String userName;
 
+    @NotNull
     @Column(name = "password")
     private String password;
+
+    @NotNull
+    @Column(name = "mail")
+    private String mail;
 
     @Column(name = "first_name")
     private String firstName;
@@ -43,40 +53,44 @@ public class UserBE {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "state")
+    private String state;
 
+    @Column(name = "country")
+    private String country;
+
+    @NotNull
     @Column(name = "enabled")
     private Boolean enabled;
 
     @Column(name = "active_season")
     private Long activeSeasonId;
 
-    public UserBE(Long id, String userName, String password, String firstName, String lastName, String mail, Boolean enabled) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mail = mail;
-        this.enabled = enabled;
-    }
-
     public UserBE() {
     }
 
-    public UserBE(String userName, String password, String mail) {
+    public UserBE(String userName, String password, String mail, String firstName, String lastName, String state, String country, Boolean enabled, Long activeSeasonId) {
         this.userName = userName;
         this.password = password;
         this.mail = mail;
-        this.enabled = true;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.state = state;
+        this.country = country;
+        this.enabled = enabled;
+        this.activeSeasonId = activeSeasonId;
     }
 
     public UserBE(UserDO userDO) {
+        this.id = userDO.getId();
         this.userName = userDO.getUserName();
-        this.firstName = userDO.getFirstName();
-        this.lastName = userDO.getSecondName();
+        this.password = userDO.getPassword();
         this.mail = userDO.getMail();
+        this.firstName = userDO.getFirstName();
+        this.lastName = userDO.getLastName();
+        this.state = userDO.getState();
+        this.country = userDO.getCountry();
+        this.enabled = userDO.getEnabled();
     }
 
     public Long getId() {
@@ -103,6 +117,14 @@ public class UserBE {
         this.password = password;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -119,12 +141,20 @@ public class UserBE {
         this.lastName = lastName;
     }
 
-    public String getMail() {
-        return mail;
+    public String getState() {
+        return state;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Boolean getEnabled() {
@@ -141,5 +171,9 @@ public class UserBE {
 
     public void setActiveSeasonId(Long activeSeasonId) {
         this.activeSeasonId = activeSeasonId;
+    }
+
+    public String getHashedPassword() {
+        return new BCryptPasswordEncoder().encode(this.password);
     }
 }

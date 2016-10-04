@@ -31,6 +31,7 @@ $(document).ready(function () {
 });
 
 setSelectedMenuItemBackgroundColor = function () {
+
     // clearing the menu items backgrund color
     $('.not-loget-in-menu-item').each(function (i, obj) {
         $(obj).css('background-color', '#333');
@@ -43,11 +44,17 @@ setSelectedMenuItemBackgroundColor = function () {
 
 tabSelected = function (path) {
     window.location.hash = UrlUtil.get(path);
-    setSelectedMenuItemBackgroundColor();
-    loadMainContent(UrlUtil.getPagePath());
 }
 
 loadMainContent = function (page) {
-    $('#main-content').empty();
-    $('#main-content').load(page);
+    $('#main-content').fadeOut(100, function () {
+        $('#main-content-loader').fadeIn(100, function () {
+            $('#main-content').empty();
+            $('#main-content').load(page, function (responseTxt, statusTxt, xhr) {
+                $('#main-content-loader').fadeOut(100, function () {
+                    $('#main-content').fadeIn(100);
+                });
+            });
+        });
+    });
 }

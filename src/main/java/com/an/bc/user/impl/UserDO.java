@@ -8,53 +8,48 @@ public class UserDO {
 
     private String userName;
 
+    private String password;
+
     private String firstName;
 
-    private String secondName;
+    private String lastName;
 
     private String mail;
 
+    private String country;
+
+    private String state;
+
     private Long activeSeasonId;
 
-    private Boolean enabled;
+    private Boolean enabled = true;
 
     public UserDO() {
     }
 
-    public UserDO(UserBE userBE) {
-        this.enabled = userBE.getEnabled();
-        this.firstName = userBE.getFirstName();
-        this.id = userBE.getId();
-        this.secondName = userBE.getLastName();
-        this.mail = userBE.getMail();
-        this.userName = userBE.getUserName();
-        this.activeSeasonId = userBE.getActiveSeasonId();
-    }
-
-    public UserDO(Boolean enabled, String firstName, Long id, String secondName, String mail, Long activeSeasonId, String userName) {
-        this.enabled = enabled;
-        this.firstName = firstName;
+    public UserDO(Long id, String userName, String password, String firstName, String lastName, String mail, String country, String state, Long activeSeasonId, Boolean enabled) {
         this.id = id;
-        this.secondName = secondName;
-        this.mail = mail;
-        this.activeSeasonId = activeSeasonId;
         this.userName = userName;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mail = mail;
+        this.country = country;
+        this.state = state;
+        this.activeSeasonId = activeSeasonId;
         this.enabled = enabled;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public UserDO(UserBE userBE) {
+        this.id = userBE.getId();
+        this.userName = userBE.getUserName();
+        this.password = userBE.getPassword();
+        this.mail = userBE.getMail();
+        this.firstName = userBE.getFirstName();
+        this.lastName = userBE.getLastName();
+        this.state = userBE.getState();
+        this.country = userBE.getCountry();
+        this.enabled = userBE.getEnabled();
     }
 
     public Long getId() {
@@ -65,12 +60,36 @@ public class UserDO {
         this.id = id;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getMail() {
@@ -81,12 +100,20 @@ public class UserDO {
         this.mail = mail;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getCountry() {
+        return country;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Long getActiveSeasonId() {
@@ -95,6 +122,14 @@ public class UserDO {
 
     public void setActiveSeasonId(Long activeSeasonId) {
         this.activeSeasonId = activeSeasonId;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
 

@@ -159,7 +159,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.6.4</version>
         </dependency>
-
+        <!-- Jersey -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.8</version>
+        </dependency>
 
     </dependencies>
 

@@ -31,6 +31,7 @@ public class MainController {
 
     @RequestMapping(value = {"/welcome**"}, method = RequestMethod.GET)
     public String welcomePage() {
-        return authService.isUserLogedIn() ? "redirect:/home" : "welcome";
+
+        return authService.isUserLogedIn() ? "redirect:/home/" : "welcome";
     }
 }

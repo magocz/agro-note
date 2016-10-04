@@ -6,10 +6,9 @@ $(document).ready(function () {
     $("#register-modal-password-repeat-label").text(I18n.get("common.password"));
     $("#register-modal-mail-label").text(I18n.get("common.mail"));
     $("#register-modal-first-name-label").text(I18n.get("common.firstname"));
-    $("#register-modal-second-name-label").text(I18n.get("common.secondname"));
+    $("#register-modal-last-name-label").text(I18n.get("common.lastname"));
     $("#register-modal-country-label").text(I18n.get("common.country"));
     $("#register-modal-state-label").text(I18n.get("common.state"));
-
     $("#register-modal-button-register").text(I18n.get("buttons.register"));
 
     $.each(I18n.getCountries(), function (key, value) {
@@ -29,8 +28,43 @@ function onCountrieSelect() {
 
 function register() {
     if (checkUserData()) {
-        console.log("User data are correct!");
+        LoaderUtil.fadeOutMedium($('#main-content'), $('#main-content-loader'));
+        $.ajax({
+            type: "PUT",
+            url: UrlUtil.get('rest.user'),
+            data: getUserData(),
+            contentType: "application/json",
+            dataType: "json",
+            statusCode: {
+                409: function (response) {
+                    markInputAsOk($('#username'));
+                    markInputAsOk($('#mail'));
+                    LoaderUtil.fadeInFast($('#main-content'), $('#main-content-loader'));
+                    if (response.responseJSON == "USERNAME_USED") {
+                        setErrorMsg('error.register.username.used');
+                        markInputAsWrong($('#username'));
+                    } else if (response.responseJSON == "MAIL_USED") {
+                        setErrorMsg('error.register.mail.used');
+                        markInputAsWrong($('#mail'));
+                    }
+                }, 200: function () {
+                    window.location.hash = UrlUtil.get('path.registersuccess');
+                }
+            }
+        });
     }
+}
+
+function getUserData() {
+    return JSON.stringify(user = {
+        userName: $('#username').val(),
+        password: $('#password').val(),
+        mail: $('#mail').val(),
+        firstName: $('#first-name').val(),
+        lastName: $('#last-name').val(),
+        country: $('#country-select').val(),
+        state: $('#state-select').val()
+    });
 }
 
 

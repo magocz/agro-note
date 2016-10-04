@@ -1,12 +1,15 @@
 package com.an.bc.user.repo;
 
+import com.an.bc.user.impl.UserDO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
+@Transactional
 public class UserRepo {
 
     @PersistenceContext
@@ -22,33 +25,37 @@ public class UserRepo {
     }
 
     public UserBE findByUsername(String username) {
-        return (UserBE) entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME).setParameter(UserBE.USERNAME, username).getSingleResult();
+        List<UserBE> userBEs = entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME).setParameter(UserBE.USERNAME, username).getResultList();
+        return userBEs.isEmpty() ? null : userBEs.get(0);
     }
 
     public UserBE findByUsernameAndMail(String username, String mail) {
-        return (UserBE) entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME_AND_MAIL)
+        List<UserBE> userBEs = entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME_AND_MAIL)
                 .setParameter(UserBE.USERNAME, username)
                 .setParameter(UserBE.MAIL, mail)
-                .getSingleResult();
+                .getResultList();
+        return userBEs.isEmpty() ? null : userBEs.get(0);
     }
 
     public UserBE findByUsernameAndPassword(String username, String password) {
-        return (UserBE) entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME_AND_PASSWORD)
+        List<UserBE> userBEs = entityManager.createNamedQuery(UserBE.FIND_BY_USERNAME_AND_PASSWORD)
                 .setParameter(UserBE.USERNAME, username)
                 .setParameter(UserBE.PASSWORD, password)
-                .getSingleResult();
-    }
-
-    @Transactional
-    public UserBE saveUser(String userName, String password, String mail) {
-        UserBE userBE = new UserBE(userName, password, mail);
-        entityManager.persist(userBE);
-        return userBE;
+                .getResultList();
+        return userBEs.isEmpty() ? null : userBEs.get(0);
     }
 
     @Transactional
     public UserBE updateUser(UserBE userBE) {
         entityManager.merge(userBE);
+        return userBE;
+    }
+
+    public UserBE saveUser(UserDO userDO) {
+        UserBE userBE = new UserBE(userDO);
+        userBE.setPassword(userBE.getHashedPassword());
+        entityManager.persist(userBE);
+        entityManager.persist(new UserRoleBE(userBE.getUserName()));
         return userBE;
     }
 }

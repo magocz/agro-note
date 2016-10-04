@@ -100,9 +100,9 @@ I18n.data = {
             pl: "Imię",
             en: "First name"
         },
-        secondname: {
+        lastname: {
             pl: "Nazwisko",
-            en: "Second name"
+            en: "Last name"
         },
         mail: {
             pl: "E-Mail",
@@ -136,7 +136,14 @@ I18n.data = {
         notselected: {
             pl: "nie wybrano",
             en: "not selected"
+        },
+        register: {
+            success: {
+                pl: "Rejestraca udana! Zaloguj się!",
+                en: "Register done! Login!"
+            }
         }
+
     },
 
     error: {
@@ -211,8 +218,13 @@ I18n.data = {
         register: {
             pl: "Zarejestruj",
             en: "Register"
+        },
+        ok: {
+            pl: "Ok",
+            en: "Ok"
         }
     },
+
 
     modals: {
         login: {
@@ -220,50 +232,60 @@ I18n.data = {
                 pl: "Palen logowania",
                 en: "Login panel"
             }
-        },
+        }
+        ,
         register: {
             title: {
                 pl: "Palen rejestracji",
                 en: "Register panel"
             }
         }
-    },
+    }
+    ,
 
     menu: {
         home: {
             pl: "Home",
             en: "Home"
-        },
+        }
+        ,
         seasons: {
             pl: "Sezony",
             en: "Seasons"
-        },
+        }
+        ,
         user: {
             pl: "Użytkownik",
             en: "User"
-        },
+        }
+        ,
         logout: {
             pl: "Wyloguj",
             en: "Logout"
-        },
+        }
+        ,
         login: {
             pl: "Zaloguj",
             en: "Wyloguj"
-        },
+        }
+        ,
         register: {
             pl: "Zarejestruj",
             en: "Register"
-        },
+        }
+        ,
         contact: {
             pl: "Kontakt",
             en: "Contact"
-        },
+        }
+        ,
         offer: {
             pl: "Oferta",
             en: "Offer"
         }
     }
-};
+}
+;
 
 // suported languages
 I18n.languages = {

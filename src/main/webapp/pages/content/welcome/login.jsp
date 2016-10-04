@@ -36,5 +36,8 @@
 
     </div>
 </div>
+<div>
+    <jsp:include page="register-success.jsp"/>
+</div>
 </body>
 </html>

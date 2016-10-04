@@ -1,13 +1,14 @@
 package com.an.bc.user.impl;
 
 import com.an.bc.auth.AuthService;
+import com.an.bc.common.enumerations.ErrorMsg;
 import com.an.bc.user.UserBCI;
 import com.an.bc.user.repo.UserBE;
 import com.an.bc.user.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import javax.ws.rs.core.Response;
 
 @Service
 public class UserBA implements UserBCI {
@@ -34,46 +35,46 @@ public class UserBA implements UserBCI {
     }
 
     @Override
-    public Response saveUser(String userName, String password, String mail) {
-        UserBE userBE = userRepo.findByUsernameAndMail(userName, mail);
+    public ResponseEntity saveUser(UserDO userDO) {
+        UserBE userBE = userRepo.findByUsernameAndMail(userDO.getUserName(), userDO.getMail());
         if (userBE == null) {
-            userBE = userRepo.saveUser(userName, passwordEncoder.generateHash(password), mail);
-            Response.ok(userBE).build();
-        } else if (userName.equals(userBE.getUserName())) {
-            Response.status(Response.Status.CONFLICT).entity("USERNAME").build();
-        } else if (mail.equals(userBE.getMail())) {
-            Response.status(Response.Status.CONFLICT).entity("MAIL").build();
+            userBE = userRepo.saveUser(userDO);
+            return new ResponseEntity(HttpStatus.OK);
+        } else if (userDO.getUserName().equals(userBE.getUserName())) {
+            return new ResponseEntity(ErrorMsg.USERNAME_USED, HttpStatus.CONFLICT);
+        } else if (userDO.getMail().equals(userBE.getMail())) {
+            return new ResponseEntity(ErrorMsg.MAIL_USED, HttpStatus.CONFLICT);
         }
-        return Response.serverError().build();
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
-    public Response updateUser(UserDO userDO) {
+    public ResponseEntity updateUser(UserDO userDO) {
         UserBE userBE = userRepo.findByUsernameAndMail(userDO.getUserName(), userDO.getMail());
         if (userBE != null && userBE.getId().equals(userDO.getId())) {
             userBE = userRepo.updateUser(new UserBE(userDO));
-            Response.ok().build();
+            return new ResponseEntity(HttpStatus.OK);
         } else if (userDO.getUserName().equals(userBE.getUserName())) {
-            Response.status(Response.Status.CONFLICT).entity("USERNAME").build();
+            return new ResponseEntity(ErrorMsg.USERNAME_USED, HttpStatus.CONFLICT);
         } else if (userDO.getMail().equals(userBE.getMail())) {
-            Response.status(Response.Status.CONFLICT).entity("MAIL").build();
+            return new ResponseEntity(ErrorMsg.MAIL_USED, HttpStatus.CONFLICT);
         }
-        return Response.serverError().build();
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
-    public Response updateUser(String userName, String password, String newPassword) {
+    public ResponseEntity updateUser(String userName, String password, String newPassword) {
         UserBE userBE = userRepo.findByUsernameAndPassword(userName, password);
         if (userBE != null) {
             userBE.setPassword(newPassword);
             userRepo.updateUser(userBE);
-            Response.ok().build();
+            new ResponseEntity(HttpStatus.CONFLICT);
         }
-        return Response.status(Response.Status.UNAUTHORIZED).build();
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
-    public Response updateUser(Long seasonId) {
+    public ResponseEntity updateUser(Long seasonId) {
         return null;
     }
 

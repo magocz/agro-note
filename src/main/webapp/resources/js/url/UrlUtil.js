@@ -13,9 +13,11 @@ UrlUtil.urls = {
         contact: "#contact",
         offer: "#offer",
         login: '#login',
-        loginerror: '/welcome#login?error',
+        loginerrorFullPath: '/agro-note/welcome#login?error',
         logout: "#logout",
-        register: '#register'
+        register: '#register',
+        registersuccess: '#login?registerSuccess',
+        registersuccessFullPath: '/agro-note/welcome#login?registerSuccess',
     },
 
     service: {
@@ -25,7 +27,7 @@ UrlUtil.urls = {
 
     rest: {
         field: "/rest/field/",
-        user: "/rest/user/",
+        user: "/agro-note/rest/user/",
         fields: "/rest/fields/",
         seasons: "/rest/seasons/"
     },

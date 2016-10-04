@@ -15,22 +15,22 @@
 
         <div class="modal-body" style="text-align: left">
             <label class="small-input_label" for="username" id="register-modal-username-label"></label>
-            <input type="text" class="small-input" id="username">
+            <input type="text" class="small-input" id="username" maxlength="100">
 
             <label class="small-input_label" for="password" id="register-modal-password-label"></label>
-            <input type="password" class="small-input" id="password">
+            <input type="password" class="small-input" id="password" maxlength="100">
 
             <label class="small-input_label" for="password-repeat" id="register-modal-password-repeat-label"></label>
             <input type="password" class="small-input" id="password-repeat">
 
             <label class="small-input_label" for="mail" id="register-modal-mail-label"></label>
-            <input type="text" class="small-input" id="mail">
+            <input type="text" class="small-input" id="mail" maxlength="200">
 
-            <label class="small-input_label" for="first-name-" id="register-modal-first-name-label"></label>
-            <input type="text" class="small-input" id="first-name-">
+            <label class="small-input_label" for="first-name" id="register-modal-first-name-label"></label>
+            <input type="text" class="small-input" id="first-name" maxlength="100">
 
-            <label class="small-input_label" for="second-name" id="register-modal-second-name-label"></label>
-            <input type="text" class="small-input" id="second-name">
+            <label class="small-input_label" for="last-name" id="register-modal-last-name-label"></label>
+            <input type="text" class="small-input" id="last-name" maxlength="100">
 
             <label class="small-input_label" for="country-select" id="register-modal-country-label"></label>
             <select class="small-input" onchange="onCountrieSelect()" style="width: 100%" id='country-select'/>
@@ -44,5 +44,5 @@
         </div>
     </div>
 </div>
-</body>
+
 </html>

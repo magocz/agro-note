@@ -1,6 +1,7 @@
 package com.an.bc.user;
 
 import com.an.bc.user.impl.UserDO;
+import org.springframework.http.ResponseEntity;
 
 import javax.ws.rs.core.Response;
 
@@ -12,11 +13,11 @@ public interface UserBCI {
 
     UserDO findLogedUser();
 
-    Response saveUser(String userName, String password, String mail);
+    ResponseEntity saveUser(UserDO userDO);
 
-    Response updateUser(UserDO userDO);
+    ResponseEntity updateUser(UserDO userDO);
 
-    Response updateUser(String userName, String password, String newPassword);
+    ResponseEntity updateUser(String userName, String password, String newPassword);
 
-    Response updateUser(Long seasonId);
+    ResponseEntity updateUser(Long seasonId);
 }
