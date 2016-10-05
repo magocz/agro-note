@@ -264,6 +264,10 @@ I18n.data = {
             en: "Logout"
         }
         ,
+        fields: {
+            pl: "Pola",
+            en: "Fields"
+        },
         login: {
             pl: "Zaloguj",
             en: "Wyloguj"

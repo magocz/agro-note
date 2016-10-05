@@ -5,14 +5,15 @@ UrlUtil.prefix = "";
 
 UrlUtil.urls = {
     path: {
-        home: "/",
+        home: "#home",
         welcome: "#welcome",
-        seasons: "/seasons",
+        seasons: "#seasons",
         field: "/field",
-        fields: "/fields",
+        fields: "#fields",
         contact: "#contact",
         offer: "#offer",
         login: '#login',
+        user: '#user',
         loginerrorFullPath: '/agro-note/welcome#login?error',
         logout: "#logout",
         register: '#register',
@@ -37,7 +38,12 @@ UrlUtil.urls = {
         contact: 'pages/content/welcome/contact.jsp',
         login: 'pages/content/welcome/login.jsp',
         loginerror: 'pages/content/welcome/login.jsp',
-        register: 'pages/content/welcome/register.jsp'
+        register: 'pages/content/welcome/register.jsp',
+
+        home: 'pages/content/home/home.jsp',
+        user: 'pages/content/home/user.jsp',
+        seasons: 'pages/content/home/seasons.jsp',
+        fields: 'pages/content/home/fields.jsp'
     }
 };
 

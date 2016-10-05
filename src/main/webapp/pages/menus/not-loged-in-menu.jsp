@@ -3,13 +3,6 @@
 <%@page pageEncoding="UTF-8" %>
 <html>
 <head>
-  <%--  <link href="<c:url value="/resources/css/common/jquery-ui.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/common/bootstrap.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/menu/menu.css" />" rel="stylesheet">
-
-    <script src="<c:url value="/resources/js/common/jquery-2.2.3.js" />"></script>
-    <script src="<c:url value="/resources/js/common/jquery-ui.js" />"></script>
-    <script src="<c:url value="/resources/js/common/bootstrap/bootstrap.js" />"></script>--%>
 </head>
 <body>
 
