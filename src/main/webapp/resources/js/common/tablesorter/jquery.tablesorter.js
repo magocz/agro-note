@@ -127,6 +127,7 @@
                     cancelSelection: true,
                     sortList: [],
                     headerList: [],
+
                     dateFormat: "us",
                     decimal: '/\.|\,/g',
                     onRenderHeader: null,

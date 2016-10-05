@@ -58,3 +58,14 @@ loadMainContent = function (page) {
         });
     });
 }
+
+loadMaintable = function () {
+    TableUtil.generateSimpleTable($('#welcome-table'),
+        [{title: 'Id', width: '100', sortable: true, type: 'text'}, {
+            title: 'Name',
+            width: '100',
+            sortable: false,
+            type: ''
+        }],
+        [{content: [1, 'Jacek'], style: 'class=bold'}, {content: [2, 'Borys'], style: 'class=bold'}]);
+}

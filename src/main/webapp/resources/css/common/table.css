@@ -1,0 +1,19 @@
+.simple-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.simple-th, simple-td {
+    text-align: left;
+    padding: 8px;
+}
+
+.simple-tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.simple-th {
+    background-color: #4CAF50;
+    color: white;
+    cursor: hand;
+}
