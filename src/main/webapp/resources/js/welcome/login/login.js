@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     $("#register-modal-succes-header").text(I18n.get("info.register.success"));
     $("#register-modal-success-button-ok").text(I18n.get("buttons.ok"));
-
+    $.cookie('username', "Bupa1");
 
     // check if login error
     if ((UrlUtil.getFullPathname() === UrlUtil.get('path.loginerrorFullPath'))) {

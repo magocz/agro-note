@@ -60,12 +60,146 @@ loadMainContent = function (page) {
 }
 
 loadMaintable = function () {
-    TableUtil.generateSimpleTable($('#welcome-table'),
-        [{title: 'Id', width: '100', sortable: true, type: 'text'}, {
-            title: 'Name',
-            width: '100',
-            sortable: false,
-            type: ''
-        }],
-        [{content: [1, 'Jacek'], style: 'class=bold'}, {content: [2, 'Borys'], style: 'class=bold'}]);
+    console.log($.cookie('username'));
+    $.cookie('username', "Dupa222");
+    console.log($.cookie('username'));
+    var mainTable = new TableUtil(
+        $('#welcome-table'),
+        [
+            {
+                title: 'ID',
+                sortable: false,
+                dataIndex: 'id',
+                width: '50'
+            },
+            {
+                title: 'NAME',
+                sortable: true,
+                dataIndex: 'name',
+                width: '100'
+            }
+        ],
+        [
+            {
+                'name': "dupa",
+                'id': "2"
+            },
+            {
+                'name': "dupa",
+                'id': "2"
+            }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        },
+        ],
+        true,
+        true
+    );
+    mainTable.generateSimpleTable();
+
+    var mainTable2 = new TableUtil(
+        $('#welcome-table2'),
+        [
+            {
+                title: 'ID',
+                sortable: false,
+                dataIndex: 'id',
+                width: '50'
+            },
+            {
+                title: 'NAME',
+                sortable: true,
+                dataIndex: 'name',
+                width: '100'
+            }
+        ],
+        [
+            {
+                'name': "dupa",
+                'id': "2"
+            },
+            {
+                'name': "dupa",
+                'id': "2"
+            }, {
+            'name': "du0pa",
+            'id': "22"
+        }, {
+            'name': "dup2a",
+            'id': "2"
+        }, {
+            'name': "du3pa",
+            'id': "2"
+        }, {
+            'name': "dupa3",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "du4pa",
+            'id': "2"
+        }, {
+            'name': "d423upa",
+            'id': "3"
+        }, {
+            'name': "dupa",
+            'id': "21"
+        }, {
+            'name': "dupa",
+            'id': "22"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        }, {
+            'name': "dupa",
+            'id': "2"
+        },
+        ],
+        true,
+        true
+    );
+    mainTable2.generateSimpleTable();
 }

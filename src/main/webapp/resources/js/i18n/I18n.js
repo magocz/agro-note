@@ -123,6 +123,10 @@ I18n.data = {
         sufrace: {
             pl: "Powierzchnia",
             en: "Surface"
+        },
+        nr: {
+            pl: "Lp",
+            en: "Nr"
         }
     },
 

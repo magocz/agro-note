@@ -1,19 +1,26 @@
 .simple-table {
-    border-collapse: collapse;
-    width: 100%;
+    text-align: center;
+    font-family: Helvetica sans-serif;
+    font-size: 18;
 }
 
 .simple-th, simple-td {
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 5 5 5 5;
 }
 
 .simple-tr:nth-child(even) {
-    background-color: #f2f2f2
+    background-color: #CCCCCC;
+}
+
+.simple-tr {
+    border-bottom: solid black 1px;
 }
 
 .simple-th {
-    background-color: #4CAF50;
-    color: white;
-    cursor: hand;
+    cursor: pointer;
+}
+
+.selected-row {
+    background-color: #808080 !important;
 }
