@@ -34,14 +34,25 @@ $(document).ready(function () {
 });
 
 setSelectedMenuItemBackgroundColor = function () {
+    var isHashOk = false;
     // clearing the menu items backgrund color
     $('.not-loget-in-menu-item').each(function (i, obj) {
         $(obj).css('background-color', '#333');
         if ($(obj).attr('hash') === UrlUtil.getHash()) {
+            isHashOk = true;
             $(obj).css('background-color', '#ff8c1a');
             loadMainContent(UrlUtil.getPagePath());
+            // check if logout
+            if (UrlUtil.getHash() === UrlUtil.get('path.logout')) {
+                window.location.pathname = UrlUtil.get('service.logout');
+            }
         }
+
     });
+
+    if (!isHashOk) {
+        window.location.hash = UrlUtil.get('path.home');
+    }
 }
 
 tabSelected = function (path) {
@@ -53,9 +64,7 @@ loadMainContent = function (page) {
         $('#main-content-loader').fadeIn(100, function () {
             $('#main-content').empty();
             $('#main-content').load(page, function (responseTxt, statusTxt, xhr) {
-                $('#main-content-loader').fadeOut(100, function () {
-                    $('#main-content').fadeIn(100);
-                });
+
             });
         });
     });

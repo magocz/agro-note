@@ -17,4 +17,6 @@ public interface SeasonBCI {
     SeasonDO findActiveSeason();
 
     SeasonDO findById(Long seasonId);
+
+    List<SeasonDO> findAllUserSeasons();
 }

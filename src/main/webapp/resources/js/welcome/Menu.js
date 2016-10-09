@@ -31,15 +31,20 @@ $(document).ready(function () {
 });
 
 setSelectedMenuItemBackgroundColor = function () {
-
+    var isHashOk = false;
     // clearing the menu items backgrund color
     $('.not-loget-in-menu-item').each(function (i, obj) {
         $(obj).css('background-color', '#333');
         if ($(obj).attr('hash') === UrlUtil.getHash()) {
             $(obj).css('background-color', '#ff8c1a');
             loadMainContent(UrlUtil.getPagePath());
+            isHashOk = true;
         }
     });
+
+    if (!isHashOk) {
+        window.location.hash = UrlUtil.get('path.welcome');
+    }
 }
 
 tabSelected = function (path) {

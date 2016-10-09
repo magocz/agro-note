@@ -8,6 +8,7 @@ import com.an.bc.user.impl.UserDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,5 +64,14 @@ public class SeasonBA implements SeasonBCI {
             return seasonBE == null ? null : new SeasonDO(seasonBE);
         }
         return null;
+    }
+
+    @Override
+    public List<SeasonDO> findAllUserSeasons() {
+        Long userId = authService.getLogedUserId();
+        if (userId != null) {
+            return seasonRepo.findByUser(userId).stream().map(SeasonDO::new).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
     }
 }

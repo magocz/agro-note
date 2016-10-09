@@ -2,6 +2,7 @@
     text-align: center;
     font-family: Helvetica sans-serif;
     font-size: 18;
+    width: 100%;
 }
 
 .simple-th, simple-td {
@@ -23,4 +24,8 @@
 
 .selected-row {
     background-color: #808080 !important;
+}
+
+.table-header {
+    border-bottom: solid black 1px;
 }

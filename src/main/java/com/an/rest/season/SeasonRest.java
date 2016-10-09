@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @RestController
-@RequestMapping("/season")
+@RequestMapping("/rest/seasons")
 public class SeasonRest {
 
     @Autowired
     private SeasonBCI seasonBCI;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path = "active")
     public SeasonDO findActiveSeason() {
         return seasonBCI.findActiveSeason();
     }
@@ -26,5 +27,10 @@ public class SeasonRest {
     @RequestMapping(method = RequestMethod.GET, path = "{seasonId}")
     public SeasonDO updateUser(@PathParam("seasonId") Long seasonId) {
         return seasonBCI.findById(seasonId);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<SeasonDO> findAllUserSeasons() {
+        return seasonBCI.findAllUserSeasons();
     }
 }

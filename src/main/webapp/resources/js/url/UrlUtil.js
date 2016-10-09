@@ -22,15 +22,16 @@ UrlUtil.urls = {
     },
 
     service: {
-        login: '/j_spring_security_check',
-        logout: '/j_spring_security_logout'
+        login: '/agro-note/j_spring_security_check',
+        logout: '/agro-note/j_spring_security_logout',
+        nohash: ''
     },
 
     rest: {
-        field: "/rest/field/",
+        field: "/agro-note/rest/field/",
         user: "/agro-note/rest/user/",
-        fields: "/rest/fields/",
-        seasons: "/rest/seasons/"
+        fields: "/agro-note/rest/fields/",
+        seasons: "/agro-note/rest/seasons/"
     },
     page: {
         welcome: 'pages/content/welcome/welcome.jsp',

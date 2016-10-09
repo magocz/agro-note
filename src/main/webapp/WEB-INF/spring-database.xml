@@ -18,13 +18,12 @@
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     <context:annotation-config/>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://188.40.44.195:3306/neldam_an?autoReconnect=true"/>
         <property name="username" value="neldam_an"/>
         <property name="password" value="dgG3r80q"/>
-        <property name="timeBetweenEvictionRunsMillis" value="300000"/>
+      <!--  <property name="timeBetweenEvictionRunsMillis" value="300000"/>
         <property name="numTestsPerEvictionRun" value="6"/>
         <property name="minEvictableIdleTimeMillis" value="1800000"/>
         <property name="initialSize" value="3"/>
@@ -33,7 +32,7 @@
         <property name="maxWait" value="-1"/>
         <property name="testOnBorrow" value="true"/>
         <property name="poolPreparedStatements" value="true"/>
-        <property name="maxOpenPreparedStatements" value="100"/>
+        <property name="maxOpenPreparedStatements" value="100"/>-->
     </bean>
 
     <bean id="entityManagerFactory"

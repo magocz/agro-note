@@ -291,7 +291,50 @@ I18n.data = {
             pl: "Oferta",
             en: "Offer"
         }
+    },
+
+    seasons: {
+        header: {
+            title: {
+                pl: "Lista sezonów",
+                en: "Seaons list"
+            }
+        },
+        buttons: {
+            add: {
+                pl: "Dodaj nowy sezon",
+                en: "Add new season"
+            }
+        },
+        table: {
+            description: {
+                pl: "Opis",
+                en: "Description"
+            },
+            operationsNumber: {
+                pl: "Liczba operacji",
+                en: "Operations number"
+            },
+            profit: {
+                pl: "Zysk",
+                en: "Profit"
+            },
+            cost: {
+                pl: "Koszt",
+                en: "Cost"
+            },
+            fieldsNumber: {
+                pl: "Zasiane pola",
+                en: "Fields"
+            },
+            fieldsSize: {
+                pl: "Zasiana powierzchnia [ha]",
+                en: "Fields size [ha]"
+            }
+        }
+
     }
+
 }
 ;
 
