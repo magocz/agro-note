@@ -50,6 +50,7 @@ public class UserDO {
         this.state = userBE.getState();
         this.country = userBE.getCountry();
         this.enabled = userBE.getEnabled();
+        this.activeSeasonId = userBE.getActiveSeasonId();
     }
 
     public Long getId() {

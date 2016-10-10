@@ -15,6 +15,18 @@ public class SeasonDO {
     private Double otherSeasonProfit;
     private Double fieldsSize;
     private Double operationsCost;
+    private Boolean activeSeason = false;
+
+    public SeasonDO(SeasonBE seasonBE, Long activeSeasonId) {
+        this(seasonBE);
+        setActiveSeason(activeSeasonId);
+    }
+
+    private void setActiveSeason(Long activeSeasonId) {
+        if (this.id == activeSeasonId) {
+            activeSeason = true;
+        }
+    }
 
     public SeasonDO(SeasonBE seasonBE) {
         this.description = seasonBE.getDescription();
@@ -134,5 +146,13 @@ public class SeasonDO {
 
     public void setProfit(Double profit) {
         this.profit = profit;
+    }
+
+    public Boolean getActiveSeason() {
+        return activeSeason;
+    }
+
+    public void setActiveSeason(Boolean activeSeason) {
+        this.activeSeason = activeSeason;
     }
 }

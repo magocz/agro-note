@@ -68,9 +68,11 @@ public class SeasonBA implements SeasonBCI {
 
     @Override
     public List<SeasonDO> findAllUserSeasons() {
-        Long userId = authService.getLogedUserId();
-        if (userId != null) {
-            return seasonRepo.findByUser(userId).stream().map(SeasonDO::new).collect(Collectors.toList());
+        UserDO user = authService.getLogedUser();
+        if (user.getId() != null) {
+            return seasonRepo.findByUser(user.getId()).stream().map(seasonBE -> {
+                return new SeasonDO(seasonBE, user.getActiveSeasonId());
+            }).collect(Collectors.toList());
         }
         return new ArrayList<>();
     }

@@ -34,6 +34,11 @@ public class AuthService {
         return getLogedUserDetails() != null;
     }
 
+    public Long getActiveSeasonId() {
+        UserDetails userDetail = getLogedUserDetails();
+        return userDetail == null ? null : userBCI.findByUsername(userDetail.getUsername()).getActiveSeasonId();
+    }
+
     private UserDetails getLogedUserDetails() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
